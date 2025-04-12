@@ -1,5 +1,8 @@
 package com.example.gradesApi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,14 +23,16 @@ public class Grade {
 
     @NotNull
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
+    @JsonIgnore
     private Student student;
 
     @NotNull
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id")
+    @JsonIgnore
     private Course course;
 
     @Min(value = 0, message = "La note ne peut pas être inférieure à 0.")

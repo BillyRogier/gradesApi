@@ -18,6 +18,10 @@ public class GradeService {
         this.gradeRepository = gradeRepository;
     }
 
+    public Grade getGradeById(Long gradeId) {
+        return gradeRepository.findById(gradeId).orElse(null);
+    }
+
     public Grade addGrade(Grade grade) {
         return gradeRepository.save(grade);
     }
@@ -40,9 +44,5 @@ public class GradeService {
 
     public List<Grade> getGradesByCourse(Long courseId) {
         return gradeRepository.findByCourseId(courseId);
-    }
-
-    public List<Grade> getGradesByStudentAndCourse(Long studentId, Long courseId) {
-        return gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
     }
 }

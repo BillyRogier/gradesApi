@@ -14,8 +14,6 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
 
     List<Grade> findByCourseId(Long courseId);
 
-    List<Grade> findByStudentIdAndCourseId(Long studentId, Long courseId);
-
     @Query("SELECT AVG(g.grade) FROM Grade g WHERE g.course.id = :courseId")
     double findAverageGradeByCourse(Long courseId);
 
